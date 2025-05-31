@@ -58,12 +58,27 @@
   </style>
 </head>
 <body>
-<!-- セキュリティ警告バナー（右から左にスライド） -->
-<div id="alert-banner" class="bg-red-700 text-white text-center py-3 font-bold fixed top-0 w-full z-50 animate-slide-in">
-  ⚠️【重要】アカウント乗っ取りが多数報告されています。本サーバーにも影響が出ています。
-  <br class="hidden sm:inline" />
-  セキュリティ設定を強化し、情報漏洩がないか今一度ご確認ください。
+<!-- LED風バナー -->
+<div class="fixed top-6 w-full bg-black text-yellow-400 font-mono py-3 overflow-hidden shadow-md z-50">
+  <div class="scrolling-text text-center text-lg whitespace-nowrap inline-block animate-led-marquee">
+    ⚠️ アカウント乗っ取りが多数報告されています。今一度漏洩されていないかご確認ください。⚠️ アカウント乗っ取りが多数報告されています。今一度漏洩されていないかご確認ください。⚠️
+  </div>
 </div>
+
+<style>
+  @keyframes ledMarquee {
+    0% {
+      transform: translateX(100%);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }
+
+  .animate-led-marquee {
+    animation: ledMarquee 20s linear infinite;
+  }
+</style>
 
 <style>
   @keyframes slideInRightToLeft {
