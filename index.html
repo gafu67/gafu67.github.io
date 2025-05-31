@@ -58,14 +58,31 @@
   </style>
 </head>
 <body>
-
-<!-- セキュリティ警告バナー -->
-<div class="bg-red-700 text-white text-center py-3 font-bold mt-12">
+<!-- セキュリティ警告バナー（右から左にスライド） -->
+<div id="alert-banner" class="bg-red-700 text-white text-center py-3 font-bold fixed top-0 w-full z-50 animate-slide-in">
   ⚠️【重要】アカウント乗っ取りが多数報告されています。本サーバーにも影響が出ています。
   <br class="hidden sm:inline" />
   セキュリティ設定を強化し、情報漏洩がないか今一度ご確認ください。
 </div>
 
+<style>
+  @keyframes slideInRightToLeft {
+    0% {
+      transform: translateX(100%);
+    }
+    100% {
+      transform: translateX(0);
+    }
+  }
+
+  .animate-slide-in {
+    animation: slideInRightToLeft 0.8s ease-out forwards;
+  }
+
+  body {
+    padding-top: 3rem; /* 警告が固定表示でもコンテンツが隠れないように調整 */
+  }
+</style>
 <!-- 氷刃アニメーション -->
 <div id="ice-effect"></div>
 <script>
