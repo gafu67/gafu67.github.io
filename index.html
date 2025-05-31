@@ -14,6 +14,23 @@
       color: #e5e7eb;
       font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     }
+
+    /* ロゴアニメーション */
+    @keyframes slideInRight {
+      0% {
+        transform: translateX(100%);
+        opacity: 0;
+      }
+      100% {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+
+    .logo-slide-in {
+      animation: slideInRight 1s ease-out forwards;
+    }
+
     .ice-blade {
       position: fixed;
       top: -100%;
@@ -24,7 +41,7 @@
       background: linear-gradient(to bottom, #a0f0ff, #6dd5fa, #2980b9);
       opacity: 0.8;
       animation: fall 1.2s ease-out forwards;
-      z-index: 50;
+      z-index: 40;
     }
     @keyframes fall {
       to {
@@ -58,8 +75,6 @@
   </style>
 </head>
 <body>
-
-
 
 <!-- セキュリティ警告バナー -->
 <div class="bg-red-700 text-white text-center py-3 font-bold mt-12">
@@ -136,8 +151,6 @@
     </span>
   </div>
 </section>
-
-
 
 <!-- 禁止事項 -->
 <section id="rules" class="bg-gray-800 py-12 px-6 max-w-4xl mx-auto rounded-lg shadow-lg mt-12 mb-12">
