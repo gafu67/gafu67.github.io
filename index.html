@@ -14,31 +14,30 @@
   </style>
 </head>
 <body>
-<div id="logo" class="fixed top-[-200px] left-1/2 transform -translate-x-1/2 text-4xl font-bold text-white z-50 transition-all duration-1000 ease-out">
-  最強連合
-</div>
+
+  <!-- ロゴ（上から落ちてくる） -->
+  <div id="logo" style="top: -200px;" class="fixed left-1/2 transform -translate-x-1/2 text-4xl font-bold text-white z-50 transition-all duration-1000 ease-out">
+    最強連合
+  </div>
   <script>
-  window.addEventListener("DOMContentLoaded", () => {
-    const logo = document.getElementById("logo");
-    setTimeout(() => {
-      logo.classList.remove("top-[-200px]");
-      logo.classList.add("top-12");
-    }, 100); // 少し遅延させて自然に見せる
-  });
-</script>
+    window.addEventListener("DOMContentLoaded", () => {
+      const logo = document.getElementById("logo");
+      setTimeout(() => {
+        logo.style.top = '3rem'; // Tailwindでいう top-12
+      }, 100);
+    });
+  </script>
 
   <!-- 注意喚起 -->
   <div class="bg-red-700 text-white text-center py-3 px-4 font-bold">
-    ドメインについて
-    <br class="sm:inline hidden" />
-近い内に別のものに変えます
+    ⚠️ ドメインについて：近日中に別の公式サイトへ移行予定です。
   </div>
 
   <!-- ヒーロー -->
   <header class="text-center py-16 px-4 bg-gradient-to-r from-purple-700 to-indigo-800 text-white">
     <h1 class="text-5xl font-bold mb-4">最強連合</h1>
     <p class="text-xl mb-6">最強を目指すフォトナTeam</p>
-    <a href="https://discord.gg/https://discord.gg/7n44P4eDsc" target="_blank"
+    <a href="https://discord.gg/7n44P4eDsc" target="_blank"
        class="bg-white text-purple-800 px-6 py-3 rounded-full font-semibold hover:bg-gray-200 transition">
       Discordに参加
     </a>
