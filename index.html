@@ -58,12 +58,56 @@
   </style>
 </head>
 <body>
-<!-- LED風バナー -->
-<div class="fixed top-6 w-full bg-black text-yellow-400 font-mono py-3 overflow-hidden shadow-md z-50">
-  <div class="scrolling-text text-center text-lg whitespace-nowrap inline-block animate-led-marquee">
-    ⚠️ アカウント乗っ取りが多数報告されています。今一度漏洩されていないかご確認ください。⚠️ アカウント乗っ取りが多数報告されています。今一度漏洩されていないかご確認ください。⚠️
+<!-- LED風警告バナー -->
+<div class="fixed top-6 w-full bg-black text-yellow-400 font-mono py-3 overflow-hidden shadow-lg z-50">
+  <div id="led-wrapper" class="whitespace-nowrap inline-block">
+    <span id="led-text" class="inline-block px-4">
+      ⚠️ アカウント乗っ取りが多数報告されています。今一度漏洩されていないかご確認ください。⚠️
+    </span>
   </div>
 </div>
+
+<style>
+  @keyframes slowScroll {
+    0% {
+      transform: translateX(100%);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }
+
+  .animate-slow-scroll {
+    animation: slowScroll 30s linear infinite;
+  }
+</style>
+
+<script>
+  const messages = [
+    "⚠️ アカウント乗っ取りが多数報告されています。今一度漏洩されていないかご確認ください。⚠️",
+    "【重要】現在Manager、サポーター募集中です。鯖までどうぞ。"
+  ];
+
+  let currentIndex = 0;
+  const ledText = document.getElementById("led-text");
+  const wrapper = document.getElementById("led-wrapper");
+
+  function updateMessage() {
+    currentIndex = (currentIndex + 1) % messages.length;
+    ledText.textContent = messages[currentIndex];
+
+    // アニメーションリセットして再スタート
+    wrapper.classList.remove("animate-slow-scroll");
+    void wrapper.offsetWidth;
+    wrapper.classList.add("animate-slow-scroll");
+  }
+
+  // 初回アニメーション開始
+  wrapper.classList.add("animate-slow-scroll");
+
+  // メッセージ切り替え：30秒ごと（アニメーション完了と同期）
+  setInterval(updateMessage, 30000);
+</script>
 
 <style>
   @keyframes ledMarquee {
