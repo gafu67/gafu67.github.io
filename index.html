@@ -13,24 +13,8 @@
       background-color: #1f2937;
       color: #e5e7eb;
       font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-      padding-top: 3rem; /* 警告バナーの分の余白 */
+      padding-top: 3rem; /* 警告が固定表示でもコンテンツが隠れないように調整 */
     }
-
-    /* LED風警告バナーのアニメーション */
-    @keyframes slowScroll {
-      0% {
-        transform: translateX(100%);
-      }
-      100% {
-        transform: translateX(-100%);
-      }
-    }
-
-    .animate-slow-scroll {
-      animation: slowScroll 50s linear infinite;
-    }
-
-    /* 氷刃アニメーション用 */
     .ice-blade {
       position: fixed;
       top: -100%;
@@ -57,8 +41,6 @@
       height: 100%;
       box-shadow: 0 0 10px #9be7ff, 0 0 20px #b3faff;
     }
-
-    /* 縦スクロール予定部分 */
     #vertical-scroll ul {
       animation: scrollUp 20s linear infinite;
     }
@@ -70,131 +52,138 @@
         transform: translateY(-50%);
       }
     }
-    #vertical-scroll {
-      height: 200px;
-      overflow: hidden;
+
+    /* ここがバナーのスクロール速度調整 */
+    @keyframes slowScroll {
+      0% {
+        transform: translateX(100%);
+      }
+      100% {
+        transform: translateX(-100%);
+      }
+    }
+    .animate-slow-scroll {
+      animation: slowScroll 13s linear infinite; /* 13秒で一周 */
     }
   </style>
 </head>
 <body>
-  <!-- LED風警告バナー -->
-  <div class="fixed top-6 w-full bg-black text-yellow-400 font-mono py-3 overflow-hidden shadow-lg z-50">
-    <div id="led-wrapper" class="whitespace-nowrap inline-block">
-      <span id="led-text" class="inline-block px-4">
-        ⚠️ アカウント乗っ取りが多数報告されています。今一度漏洩されていないかご確認ください。⚠️
-      </span>
-    </div>
+
+<!-- LED風警告バナー -->
+<div class="fixed top-6 w-full bg-black text-yellow-400 font-mono py-3 overflow-hidden shadow-lg z-50">
+  <div id="led-wrapper" class="whitespace-nowrap inline-block">
+    <span id="led-text" class="inline-block px-4">
+      ⚠️ アカウント乗っ取りが多数報告されています。今一度漏洩されていないかご確認ください。⚠️
+    </span>
   </div>
+</div>
 
-  <script>
-    const messages = [
-      "⚠️ アカウント乗っ取りが多数報告されています。今一度漏洩されていないかご確認ください。⚠️",
-      "【重要】現在Manager、サポーター募集中です。鯖までどうぞ。"
-    ];
+<script>
+  const messages = [
+    "⚠️ アカウント乗っ取りが多数報告されています。今一度漏洩されていないかご確認ください。⚠️",
+    "【重要】現在Manager、サポーター募集中です。鯖までどうぞ。"
+  ];
 
-    let currentIndex = 0;
-    const ledText = document.getElementById("led-text");
-    const wrapper = document.getElementById("led-wrapper");
+  let currentIndex = 0;
+  const ledText = document.getElementById("led-text");
+  const wrapper = document.getElementById("led-wrapper");
 
-    function updateMessage() {
-      currentIndex = (currentIndex + 1) % messages.length;
-      ledText.textContent = messages[currentIndex];
-
-      // アニメーションを一旦リセットして再スタート
-      wrapper.classList.remove("animate-slow-scroll");
-      void wrapper.offsetWidth;  // リフロー強制
-      wrapper.classList.add("animate-slow-scroll");
-    }
-
-    // 初回アニメーション開始
+  function updateMessage() {
+    currentIndex = (currentIndex + 1) % messages.length;
+    ledText.textContent = messages[currentIndex];
+    wrapper.classList.remove("animate-slow-scroll");
+    void wrapper.offsetWidth;  // リフロー強制
     wrapper.classList.add("animate-slow-scroll");
+  }
 
-    // メッセージ切り替えは50秒毎に
-    setInterval(updateMessage, 50000);
-  </script>
+  // 初回アニメーション開始
+  wrapper.classList.add("animate-slow-scroll");
 
-  <!-- 氷刃アニメーション -->
-  <div id="ice-effect"></div>
-  <script>
-    window.addEventListener("load", () => {
-      for (let i = 0; i < 12; i++) {
-        const blade = document.createElement("div");
-        blade.className = "ice-blade";
-        blade.style.left = `${Math.random() * 100}%`;
-        blade.style.animationDelay = `${Math.random() * 0.5}s`;
-        document.getElementById("ice-effect").appendChild(blade);
-      }
-    });
-  </script>
+  // メッセージ切り替えは13秒ごと（アニメーション完了と同期）
+  setInterval(updateMessage, 13000);
+</script>
 
-  <!-- ヒーローセクション -->
-  <header id="hero" class="text-center py-20 px-4 bg-gradient-to-br from-indigo-600 to-purple-700 text-white mt-12">
-    <h1 class="text-4xl md:text-6xl font-bold">gafuCommunity</h1>
-    <p class="mt-4 text-lg md:text-xl">楽しく、自由に、つながろう。</p>
-    <a href="https://discord.gg/W2AYhaau2D" target="_blank"
-       class="mt-6 inline-block bg-white text-indigo-700 font-semibold px-6 py-3 rounded-full hover:bg-gray-100 transition">
-      Discordに参加する
-    </a>
-  </header>
+<!-- 氷刃アニメーション -->
+<div id="ice-effect"></div>
+<script>
+  window.addEventListener("load", () => {
+    for (let i = 0; i < 12; i++) {
+      const blade = document.createElement("div");
+      blade.className = "ice-blade";
+      blade.style.left = `${Math.random() * 100}%`;
+      blade.style.animationDelay = `${Math.random() * 0.5}s`;
+      document.getElementById("ice-effect").appendChild(blade);
+    }
+  });
+</script>
 
-  <!-- 以下、元のコンテンツ続き -->
-  <!-- 所属 -->
-  <section id="soshoku" class="bg-white py-12 px-6 max-w-4xl mx-auto rounded-lg shadow-lg border-t-8 border-blue-700 mt-12">
-    <h2 class="text-3xl font-bold text-blue-700 text-center mb-4 border-b-2 border-blue-500 pb-2">所属「管理鯖」</h2>
-    <ul class="list-disc list-inside text-gray-700 text-lg space-y-2">
-      <li>gafuCommunity 本部サーバー</li>
-      <li>ぼくのいばしょ コミュニティ鯖</li>
+<!-- ヒーローセクション -->
+<header id="hero" class="text-center py-20 px-4 bg-gradient-to-br from-indigo-600 to-purple-700 text-white mt-12">
+  <h1 class="text-4xl md:text-6xl font-bold">gafuCommunity</h1>
+  <p class="mt-4 text-lg md:text-xl">楽しく、自由に、つながろう。</p>
+  <a href="https://discord.gg/W2AYhaau2D" target="_blank"
+     class="mt-6 inline-block bg-white text-indigo-700 font-semibold px-6 py-3 rounded-full hover:bg-gray-100 transition">
+    Discordに参加する
+  </a>
+</header>
+
+<!-- 所属 -->
+<section id="soshoku" class="bg-white py-12 px-6 max-w-4xl mx-auto rounded-lg shadow-lg border-t-8 border-blue-700 mt-12">
+  <h2 class="text-3xl font-bold text-blue-700 text-center mb-4 border-b-2 border-blue-500 pb-2">所属「管理鯖」</h2>
+  <ul class="list-disc list-inside text-gray-700 text-lg space-y-2">
+    <li>gafuCommunity 本部サーバー</li>
+    <li>ぼくのいばしょ コミュニティ鯖</li>
+  </ul>
+</section>
+
+<!-- スケジュール -->
+<section id="schedule" class="bg-gray-800 py-12 px-6 max-w-4xl mx-auto rounded-lg shadow-lg mt-12">
+  <h2 class="text-3xl font-bold mb-6 text-center text-white">📅 今後の予定</h2>
+  <div id="vertical-scroll" class="relative">
+    <ul class="space-y-4">
+      <li class="bg-gray-700 rounded-lg p-4 text-center shadow-md">
+        <time class="block font-semibold text-indigo-400 mb-2">2025/6/01 (日)</time>
+        <p>サーバーメンテナンス</p>
+      </li>
+      <li class="bg-gray-700 rounded-lg p-4 text-center shadow-md">
+        <time class="block font-semibold text-indigo-400 mb-2">2025/06/09 (月)</time>
+        <p>サーバーメンテナンス</p>
+      </li>
+      <li class="bg-gray-700 rounded-lg p-4 text-center shadow-md">
+        <time class="block font-semibold text-indigo-400 mb-2">2025/6/20（水）</time>
+        <p>メンテナンス機能確認日</p>
+      </li>
+      <li class="bg-gray-700 rounded-lg p-4 text-center shadow-md"><p>未定</p></li>
+      <li class="bg-gray-700 rounded-lg p-4 text-center shadow-md"><p>未定</p></li>
     </ul>
-  </section>
+  </div>
+</section>
 
-  <!-- スケジュール -->
-  <section id="schedule" class="bg-gray-800 py-12 px-6 max-w-4xl mx-auto rounded-lg shadow-lg mt-12">
-    <h2 class="text-3xl font-bold mb-6 text-center text-white">📅 今後の予定</h2>
-    <div id="vertical-scroll" class="relative">
-      <ul class="space-y-4">
-        <li class="bg-gray-700 rounded-lg p-4 text-center shadow-md">
-          <time class="block font-semibold text-indigo-400 mb-2">2025/6/01 (日)</time>
-          <p>サーバーメンテナンス</p>
-        </li>
-        <li class="bg-gray-700 rounded-lg p-4 text-center shadow-md">
-          <time class="block font-semibold text-indigo-400 mb-2">2025/06/09 (月)</time>
-          <p>サーバーメンテナンス</p>
-        </li>
-        <li class="bg-gray-700 rounded-lg p-4 text-center shadow-md">
-          <time class="block font-semibold text-indigo-400 mb-2">2025/6/20（水）</time>
-          <p>メンテナンス機能確認日</p>
-        </li>
-        <li class="bg-gray-700 rounded-lg p-4 text-center shadow-md"><p>未定</p></li>
-        <li class="bg-gray-700 rounded-lg p-4 text-center shadow-md"><p>未定</p></li>
-      </ul>
-    </div>
-  </section>
+<!-- 自作Bot -->
+<section id="bot" class="bg-gray-800 py-12 px-6 max-w-3xl mx-auto rounded-lg shadow-lg mb-12 text-center">
+  <h2 class="text-3xl font-bold text-white mb-4">🤖 自作Botメンテナンス中</h2>
+  <p class="text-red-400 text-lg font-semibold mb-2">現在、gafuCommunityの自作Botはメンテナンスを行っております。</p>
+  <p class="text-gray-300">Bot機能の一部またはすべてが一時的にご利用いただけません。</p>
+  <p class="text-gray-400">復旧のお知らせはDiscordサーバー内「📢お知らせ」チャンネルにて行います。</p>
+  <div class="mt-6">
+    <span class="inline-block bg-yellow-600 text-white px-5 py-2 rounded-full font-semibold animate-pulse">
+      メンテナンス中 🔧
+    </span>
+  </div>
+</section>
 
-  <!-- 自作Bot -->
-  <section id="bot" class="bg-gray-800 py-12 px-6 max-w-3xl mx-auto rounded-lg shadow-lg mb-12 text-center">
-    <h2 class="text-3xl font-bold text-white mb-4">🤖 自作Botメンテナンス中</h2>
-    <p class="text-red-400 text-lg font-semibold mb-2">現在、gafuCommunityの自作Botはメンテナンスを行っております。</p>
-    <p class="text-gray-300">Bot機能の一部またはすべてが一時的にご利用いただけません。</p>
-    <p class="text-gray-400">復旧のお知らせはDiscordサーバー内「📢お知らせ」チャンネルにて行います。</p>
-    <div class="mt-6">
-      <span class="inline-block bg-yellow-600 text-white px-5 py-2 rounded-full font-semibold animate-pulse">
-        メンテナンス中 🔧
-      </span>
-    </div>
-  </section>
-
-  <!-- 禁止事項 -->
-  <section id="rules" class="bg-gray-800 py-12 px-6 max-w-4xl mx-auto rounded-lg shadow-lg mt-12 mb-12">
-    <h2 class="text-3xl font-bold mb-6 text-center text-white">🚫 禁止事項</h2>
-    <ul class="list-disc list-inside text-gray-300 text-lg leading-relaxed space-y-2">
-      <li>他人への迷惑行為・誹謗中傷</li>
-      <li>スパム・荒らし行為</li>
-      <li>無断での広告・宣伝</li>
-      <li>個人情報の公開</li>
-      <li><strong>サポーターは3回目以降なれません</strong></li>
-      <li>その他、モデレーターが不適切と判断した行為</li>
-    </ul>
-  </section>
+<!-- 禁止事項 -->
+<section id="rules" class="bg-gray-800 py-12 px-6 max-w-4xl mx-auto rounded-lg shadow-lg mt-12 mb-12">
+  <h2 class="text-3xl font-bold mb-6 text-center text-white">🚫 禁止事項</h2>
+  <ul class="list-disc list-inside text-gray-300 text-lg leading-relaxed space-y-2">
+    <li>他人への迷惑行為・誹謗中傷</li>
+    <li>スパム・荒らし行為</li>
+    <li>無断での広告・宣伝</li>
+    <li>個人情報の公開</li>
+    <li><strong>サポーターは3回目以降なれません</strong></li>
+    <li>その他、モデレーターが不適切と判断した行為</li>
+  </ul>
+</section>
 
 </body>
 </html>
