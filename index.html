@@ -3,119 +3,79 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>gafuCommunity | 公式サイト</title>
+  <title>gafuCommunity | 鉄道風ポータル</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
   <style>
     html { scroll-behavior: smooth; }
     body {
-      background-color: #1f2937;
-      color: #e5e7eb;
-      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-      padding-top: 3rem;
+      background-color: #0f172a;
+      color: #e2e8f0;
+      font-family: 'Yu Gothic', 'Noto Sans JP', sans-serif;
     }
-    .ice-blade {
-      position: fixed;
-      top: -100%;
-      left: 50%;
-      transform: translateX(-50%) rotate(45deg);
-      width: 4px;
-      height: 200px;
-      background: linear-gradient(to bottom, #a0f0ff, #6dd5fa, #2980b9);
-      opacity: 0.8;
-      animation: fall 1.2s ease-out forwards;
-      z-index: 40;
+    .scroll-alert {
+      animation: scroll-left 15s linear infinite;
     }
-    @keyframes fall {
-      to {
-        top: 120%;
-        opacity: 0;
-        transform: translateX(-50%) rotate(45deg) scaleX(1.2);
-      }
-    }
-    .ice-blade::after {
-      content: '';
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      box-shadow: 0 0 10px #9be7ff, 0 0 20px #b3faff;
-    }
-    @keyframes fastScroll {
+    @keyframes scroll-left {
       0% { transform: translateX(100%); }
       100% { transform: translateX(-100%); }
     }
-    .animate-fast-scroll {
-      animation: fastScroll 10s linear infinite;
-    }
   </style>
 </head>
-<body>
+<body class="pt-16">
 
-  <!-- バナー -->
-  <div class="fixed top-0 w-full bg-black text-yellow-400 font-mono py-3 overflow-hidden shadow-lg z-50">
-    <div class="whitespace-nowrap inline-block animate-fast-scroll">
-      <span class="inline-block px-4">
-     【重要】アカウント「不正アクセス」が多数いろんなsnsにて報告されています。pass漏洩のないか今一度ご確認ください。
-      </span>
+  <!-- 🚨 電光掲示風バナー -->
+  <div class="fixed top-0 left-0 right-0 bg-black text-yellow-400 font-mono py-2 shadow-lg z-50 overflow-hidden">
+    <div class="whitespace-nowrap scroll-alert px-4">
+      【運行情報】SNS上での不正アクセスが増加中。パスワード再確認を強く推奨します。
     </div>
   </div>
 
-  <!-- 氷刃アニメーション -->
-  <div id="ice-effect"></div>
-  <script>
-    window.addEventListener("load", () => {
-      for (let i = 0; i < 12; i++) {
-        const blade = document.createElement("div");
-        blade.className = "ice-blade";
-        blade.style.left = `${Math.random() * 100}%`;
-        blade.style.animationDelay = `${Math.random() * 0.5}s`;
-        document.getElementById("ice-effect").appendChild(blade);
-      }
-    });
-  </script>
-
-  <!-- ヒーローセクション -->
-  <header id="hero" class="text-center py-20 px-4 bg-gradient-to-br from-indigo-600 to-purple-700 text-white mt-12">
-    <h1 class="text-4xl md:text-6xl font-bold">gafuCommunity</h1>
-    <p class="mt-4 text-lg md:text-xl">楽しく、自由に、つながろう。</p>
+  <!-- 🚉 ヒーローセクション：駅看板風 -->
+  <header class="text-center py-20 px-4 bg-gradient-to-br from-slate-700 to-slate-900 text-white">
+    <h1 class="text-5xl md:text-6xl font-extrabold tracking-widest mb-4 border-b-4 border-lime-400 inline-block px-4 pb-2">
+      gafuCommunity 駅
+    </h1>
+    <p class="text-xl md:text-2xl mt-4">乗り換えなしで、つながろう。</p>
     <a href="https://discord.gg/W2AYhaau2D" target="_blank"
-       class="mt-6 inline-block bg-white text-indigo-700 font-semibold px-6 py-3 rounded-full hover:bg-gray-100 transition">
-      Discordに参加する
+       class="mt-6 inline-block bg-lime-400 text-black font-semibold px-6 py-3 rounded hover:bg-lime-300 transition">
+      Discord 乗車はこちら →
     </a>
   </header>
 
-  <!-- 所属 -->
-  <section id="soshoku" class="bg-white py-12 px-6 max-w-4xl mx-auto rounded-lg shadow-lg border-t-8 border-blue-700 mt-12">
-    <h2 class="text-3xl font-bold text-blue-700 text-center mb-4 border-b-2 border-blue-500 pb-2">所属「管理鯖」</h2>
-    <ul class="list-disc list-inside text-gray-700 text-lg space-y-2">
-      <li>gafuCommunity 本部サーバー</li>
-      <li>ぼくのいばしょ コミュニティ鯖</li>
+  <!-- 🧭 所属路線 -->
+  <section class="bg-white text-gray-800 py-12 px-6 max-w-4xl mx-auto rounded-lg shadow-lg mt-12">
+    <h2 class="text-3xl font-bold text-blue-700 border-b-2 border-blue-400 mb-4">🛤 所属「路線」案内</h2>
+    <ul class="list-disc list-inside text-lg space-y-2">
+      <li>gafuCommunity 本部線</li>
+      <li>ぼくのいばしょ 支線</li>
     </ul>
   </section>
 
-  <!-- 自作Bot -->
-  <section id="bot" class="bg-gray-800 py-12 px-6 max-w-3xl mx-auto rounded-lg shadow-lg mb-12 text-center mt-12">
-    <h2 class="text-3xl font-bold text-white mb-4">🤖 自作Botメンテナンス中</h2>
-    <p class="text-red-400 text-lg font-semibold mb-2">現在、gafuCommunityの自作Botはメンテナンスを行っております。</p>
-    <p class="text-gray-300">Bot機能の一部またはすべてが一時的にご利用いただけません。</p>
-    <p class="text-gray-400">復旧のお知らせはDiscordサーバー内「📢お知らせ」チャンネルにて行います。</p>
+  <!-- 🤖 Bot案内掲示板 -->
+  <section class="bg-gray-900 py-12 px-6 max-w-3xl mx-auto rounded-lg shadow-lg mt-12 text-center">
+    <h2 class="text-3xl font-bold text-lime-400 mb-4">🤖 自作Bot 運休のお知らせ</h2>
+    <p class="text-red-400 text-lg font-semibold mb-2">ただいまメンテナンス中です。</p>
+    <p class="text-gray-300">Bot機能の一部または全体が一時的に停止しています。</p>
+    <p class="text-gray-400">復旧のお知らせはDiscord「📢お知らせ」にて案内予定。</p>
     <div class="mt-6">
-      <span class="inline-block bg-yellow-600 text-white px-5 py-2 rounded-full font-semibold animate-pulse">
-        メンテナンス中 🔧
+      <span class="inline-block bg-yellow-500 text-black px-5 py-2 rounded-full font-semibold animate-pulse">
+        メンテナンス運休中 🛠
       </span>
     </div>
   </section>
 
-  <!-- 禁止事項 -->
-  <section id="rules" class="bg-gray-800 py-12 px-6 max-w-4xl mx-auto rounded-lg shadow-lg mt-12 mb-12">
-    <h2 class="text-3xl font-bold mb-6 text-center text-white">🚫 禁止事項</h2>
-    <ul class="list-disc list-inside text-gray-300 text-lg leading-relaxed space-y-2">
-      <li>他人への迷惑行為・誹謗中傷</li>
-      <li>スパム・荒らし行為</li>
-      <li>無断での広告・宣伝</li>
-      <li>個人情報の公開</li>
-      <li><strong>サポーターは3回目以降なれません</strong></li>
-      <li>その他、モデレーターが不適切と判断した行為</li>
+  <!-- 🚫 禁止事項：車内マナー風 -->
+  <section class="bg-gray-800 py-12 px-6 max-w-4xl mx-auto rounded-lg shadow-lg mt-12 mb-12">
+    <h2 class="text-3xl font-bold mb-6 text-center text-white">🚫 ご乗車にあたっての注意</h2>
+    <ul class="list-disc list-inside text-gray-300 text-lg space-y-2">
+      <li>他人への迷惑行為・誹謗中傷の禁止</li>
+      <li>スパム・荒らし行為の禁止</li>
+      <li>無断での広告・宣伝は禁止</li>
+      <li>個人情報の公開禁止</li>
+      <li><strong>サポーター登録は3回目以降不可</strong></li>
+      <li>その他、乗務員が不適切と判断した行為</li>
     </ul>
   </section>
+
 </body>
 </html>
