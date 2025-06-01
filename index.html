@@ -3,136 +3,50 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>gafuCommunity | 公式サイト</title>
+  <title>gafuCommunity | サービス終了のお知らせ</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
   <style>
-    html { scroll-behavior: smooth; }
     body {
       background-color: #1f2937;
       color: #e5e7eb;
       font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-      padding-top: 3rem;
-    }
-    .ice-blade {
-      position: fixed;
-      top: -100%;
-      left: 50%;
-      transform: translateX(-50%) rotate(45deg);
-      width: 4px;
-      height: 200px;
-      background: linear-gradient(to bottom, #a0f0ff, #6dd5fa, #2980b9);
-      opacity: 0.8;
-      animation: fall 1.2s ease-out forwards;
-      z-index: 40;
-    }
-    @keyframes fall {
-      to {
-        top: 120%;
-        opacity: 0;
-        transform: translateX(-50%) rotate(45deg) scaleX(1.2);
-      }
-    }
-    .ice-blade::after {
-      content: '';
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      box-shadow: 0 0 10px #9be7ff, 0 0 20px #b3faff;
-    }
-    @keyframes fastScroll {
-      0% { transform: translateX(100%); }
-      100% { transform: translateX(-100%); }
-    }
-    .animate-fast-scroll {
-      animation: fastScroll 10s linear infinite;
     }
   </style>
 </head>
-<body>
+<body class="text-center px-6 py-10">
 
-  <!-- バナー -->
-  <div class="fixed top-0 w-full bg-black text-yellow-400 font-mono py-3 overflow-hidden shadow-lg z-50">
-    <div class="whitespace-nowrap inline-block animate-fast-scroll">
-      <span class="inline-block px-4">
-        discordアカウント乗っ取り「不正アクセス」が多数報告されています。本サーバーにも影響が出ています。アカウント乗っ取りを防ぐには漏洩されてないか今一度ご確認くだささい
-      </span>
-    </div>
+  <!-- 終了バナー -->
+  <div class="bg-red-700 text-white py-4 shadow-md">
+    <p class="text-lg font-semibold">【重要】このサイトは 2025年6月19日 をもってサービスを終了しました。</p>
   </div>
 
-  <!-- 氷刃アニメーション -->
-  <div id="ice-effect"></div>
-  <script>
-    window.addEventListener("load", () => {
-      for (let i = 0; i < 12; i++) {
-        const blade = document.createElement("div");
-        blade.className = "ice-blade";
-        blade.style.left = `${Math.random() * 100}%`;
-        blade.style.animationDelay = `${Math.random() * 0.5}s`;
-        document.getElementById("ice-effect").appendChild(blade);
-      }
-    });
-  </script>
-<!-- 対応について -->
-<section id="taiou" class="bg-red-100 text-gray-800 py-10 px-6 max-w-3xl mx-auto rounded-lg shadow-lg mt-12">
-  <h2 class="text-2xl font-bold text-red-700 mb-4">📵 対応について</h2>
-  <p class="text-lg">
-    現在スマホの充電口が壊れているため、<strong>今月中に買い替えを予定</strong>しています。<br />
-    それまでは返信・対応などが<strong>あまりできません</strong>ので、ご了承ください。
-  </p>
-</section>
-
-<!-- サービス終了のおしらせ -->
-<section id="end-of-service" class="bg-gray-900 text-white py-10 px-6 max-w-3xl mx-auto rounded-lg shadow-lg mt-12 mb-12">
-  <h2 class="text-2xl font-bold text-red-400 mb-4">🔔 サービス終了のおしらせ</h2>
-  <p class="text-lg">
-    <strong>6月1日</strong>をもちまして、当サービスは終了いたします。<br />
-    オーナー・管理者による運営が困難となったことが理由です。<br />
-    これまでのご参加・ご協力に心より感謝申し上げます。
-  </p>
-</section>
   <!-- ヒーローセクション -->
-  <header id="hero" class="text-center py-20 px-4 bg-gradient-to-br from-indigo-600 to-purple-700 text-white mt-12">
-    <h1 class="text-4xl md:text-6xl font-bold">gafuCommunity</h1>
-    <p class="mt-4 text-lg md:text-xl">楽しく、自由に、つながろう。</p>
-    <a href="https://discord.gg/W2AYhaau2D" target="_blank"
-       class="mt-6 inline-block bg-white text-indigo-700 font-semibold px-6 py-3 rounded-full hover:bg-gray-100 transition">
-      Discordに参加する
-    </a>
-  </header>
-
-  <!-- 所属 -->
-  <section id="soshoku" class="bg-white py-12 px-6 max-w-4xl mx-auto rounded-lg shadow-lg border-t-8 border-blue-700 mt-12">
-    <h2 class="text-3xl font-bold text-blue-700 text-center mb-4 border-b-2 border-blue-500 pb-2">所属「管理鯖」</h2>
-    <ul class="list-disc list-inside text-gray-700 text-lg space-y-2">
-      <li>gafuCommunity 本部サーバー</li>
-      <li>ぼくのいばしょ コミュニティ鯖</li>
-    </ul>
+  <section class="py-20">
+    <h1 class="text-4xl md:text-5xl font-bold text-white mb-4">gafuCommunity</h1>
+    <p class="text-xl text-gray-300">ご利用ありがとうございました。</p>
+    <p class="mt-4 text-lg text-gray-400">本サービスは運営の都合により終了いたしました。</p>
   </section>
 
-  <!-- 自作Bot -->
-  <section id="bot" class="bg-gray-800 py-12 px-6 max-w-3xl mx-auto rounded-lg shadow-lg mb-12 text-center mt-12">
-    <h2 class="text-3xl font-bold text-white mb-4">🤖 自作Botメンテナンス中</h2>
-    <p class="text-red-400 text-lg font-semibold mb-2">現在、gafuCommunityの自作Botはメンテナンスを行っております。</p>
-    <p class="text-gray-300">Bot機能の一部またはすべてが一時的にご利用いただけません。</p>
-    <p class="text-gray-400">復旧のお知らせはDiscordサーバー内「📢お知らせ」チャンネルにて行います。</p>
-    <div class="mt-6">
-      <span class="inline-block bg-yellow-600 text-white px-5 py-2 rounded-full font-semibold animate-pulse">
-        メンテナンス中 🔧
-      </span>
-    </div>
+  <!-- 感謝セクション -->
+  <section class="bg-gray-800 max-w-3xl mx-auto py-12 px-6 rounded-lg shadow-lg mt-8 mb-12">
+    <h2 class="text-3xl font-bold text-white mb-6">🙏 これまでのご愛顧に感謝</h2>
+    <p class="text-gray-300 text-lg leading-relaxed">
+      多くの方にご参加いただき、活発なコミュニケーションが生まれたことに感謝しております。<br />
+      運営体制の都合により、継続が困難となったため、2025年6月19日をもってサービスを終了しました。
+    </p>
   </section>
 
-  <!-- 禁止事項 -->
-  <section id="rules" class="bg-gray-800 py-12 px-6 max-w-4xl mx-auto rounded-lg shadow-lg mt-12 mb-12">
-    <h2 class="text-3xl font-bold mb-6 text-center text-white">🚫 禁止事項</h2>
-    <ul class="list-disc list-inside text-gray-300 text-lg leading-relaxed space-y-2">
-      <li>他人への迷惑行為・誹謗中傷</li>
-      <li>スパム・荒らし行為</li>
-      <li>無断での広告・宣伝</li>
-      <li>個人情報の公開</li>
-      <li><strong>サポーターは3回目以降なれません</strong></li>
-      <li>その他、モデレーターが不適切と判断した行為</li>
-    </ul>
+  <!-- サービス概要 -->
+  <section class="bg-gray-700 max-w-3xl mx-auto py-10 px-6 rounded-lg shadow-lg mb-12">
+    <h2 class="text-2xl font-bold text-white mb-4">🌐 gafuCommunityとは</h2>
+    <p class="text-gray-300">
+      自由と尊重を大切にするDiscordコミュニティとして、雑談・相談・創作共有の場を提供してきました。
+    </p>
   </section>
+
+  <!-- フッター -->
+  <footer class="text-gray-500 text-sm py-6">
+    &copy; 2025 gafuCommunity. All rights reserved.
+  </footer>
 </body>
 </html>
