@@ -6,9 +6,7 @@
   <title>gafuCommunity | 公式サイト</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
   <style>
-    html {
-      scroll-behavior: smooth;
-    }
+    html { scroll-behavior: smooth; }
     body {
       background-color: #1f2937;
       color: #e5e7eb;
@@ -42,12 +40,8 @@
       box-shadow: 0 0 10px #9be7ff, 0 0 20px #b3faff;
     }
     @keyframes fastScroll {
-      0% {
-        transform: translateX(100%);
-      }
-      100% {
-        transform: translateX(-100%);
-      }
+      0% { transform: translateX(100%); }
+      100% { transform: translateX(-100%); }
     }
     .animate-fast-scroll {
       animation: fastScroll 10s linear infinite;
@@ -56,7 +50,7 @@
 </head>
 <body>
 
-  <!-- スクロールバナー（10秒で1周） -->
+  <!-- バナー -->
   <div class="fixed top-0 w-full bg-black text-yellow-400 font-mono py-3 overflow-hidden shadow-lg z-50">
     <div class="whitespace-nowrap inline-block animate-fast-scroll">
       <span class="inline-block px-4">
@@ -98,31 +92,8 @@
     </ul>
   </section>
 
-  <!-- スケジュール -->
-  <section id="schedule" class="bg-gray-800 py-12 px-6 max-w-4xl mx-auto rounded-lg shadow-lg mt-12">
-    <h2 class="text-3xl font-bold mb-6 text-center text-white">📅 今後の予定</h2>
-    <div id="vertical-scroll" class="relative">
-      <ul class="space-y-4">
-        <li class="bg-gray-700 rounded-lg p-4 text-center shadow-md">
-          <time class="block font-semibold text-indigo-400 mb-2">2025/6/01 (日)</time>
-          <p>サーバーメンテナンス</p>
-        </li>
-        <li class="bg-gray-700 rounded-lg p-4 text-center shadow-md">
-          <time class="block font-semibold text-indigo-400 mb-2">2025/06/09 (月)</time>
-          <p>サーバーメンテナンス</p>
-        </li>
-        <li class="bg-gray-700 rounded-lg p-4 text-center shadow-md">
-          <time class="block font-semibold text-indigo-400 mb-2">2025/6/20（水）</time>
-          <p>メンテナンス機能確認日</p>
-        </li>
-        <li class="bg-gray-700 rounded-lg p-4 text-center shadow-md"><p>未定</p></li>
-        <li class="bg-gray-700 rounded-lg p-4 text-center shadow-md"><p>未定</p></li>
-      </ul>
-    </div>
-  </section>
-
   <!-- 自作Bot -->
-  <section id="bot" class="bg-gray-800 py-12 px-6 max-w-3xl mx-auto rounded-lg shadow-lg mb-12 text-center">
+  <section id="bot" class="bg-gray-800 py-12 px-6 max-w-3xl mx-auto rounded-lg shadow-lg mb-12 text-center mt-12">
     <h2 class="text-3xl font-bold text-white mb-4">🤖 自作Botメンテナンス中</h2>
     <p class="text-red-400 text-lg font-semibold mb-2">現在、gafuCommunityの自作Botはメンテナンスを行っております。</p>
     <p class="text-gray-300">Bot機能の一部またはすべてが一時的にご利用いただけません。</p>
