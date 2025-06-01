@@ -3,65 +3,121 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>活動終了のお知らせ</title>
+  <title>gafuCommunity | 公式サイト</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
   <style>
+    html { scroll-behavior: smooth; }
     body {
-      background-color: #111827;
+      background-color: #1f2937;
       color: #e5e7eb;
       font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
+      padding-top: 3rem;
     }
-    .container {
-      background-color: #1f2937;
-      border: 2px solid #374151;
-      border-radius: 12px;
-      padding: 2rem;
-      max-width: 600px;
-      width: 90%;
-      box-shadow: 0 0 20px rgba(59, 130, 246, 0.2);
+    .ice-blade {
+      position: fixed;
+      top: -100%;
+      left: 50%;
+      transform: translateX(-50%) rotate(45deg);
+      width: 4px;
+      height: 200px;
+      background: linear-gradient(to bottom, #a0f0ff, #6dd5fa, #2980b9);
+      opacity: 0.8;
+      animation: fall 1.2s ease-out forwards;
+      z-index: 40;
     }
-    h1 {
-      font-size: 1.8rem;
-      margin-bottom: 1rem;
-      color: #f87171;
-      text-align: center;
+    @keyframes fall {
+      to {
+        top: 120%;
+        opacity: 0;
+        transform: translateX(-50%) rotate(45deg) scaleX(1.2);
+      }
     }
-    p {
-      line-height: 1.7;
-      font-size: 1rem;
-      margin-bottom: 1rem;
-      color: #d1d5db;
+    .ice-blade::after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      box-shadow: 0 0 10px #9be7ff, 0 0 20px #b3faff;
     }
-    .footer {
-      margin-top: 2rem;
-      text-align: center;
-      font-size: 0.9rem;
-      color: #9ca3af;
+    @keyframes fastScroll {
+      0% { transform: translateX(100%); }
+      100% { transform: translateX(-100%); }
+    }
+    .animate-fast-scroll {
+      animation: fastScroll 10s linear infinite;
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <h1>🌙 活動終了のお知らせ</h1>
-    <p>
-      本日をもちまして、インターネット上でのすべての活動を終了いたします。
-    </p>
-    <p>
-      僕が関わることで、時に喧嘩や摩擦が生まれてしまい、心苦しく感じていました。<br>
-      これ以上迷惑をかける前に、身を引くことを選びました。
-    </p>
-    <p>
-      今まで関わってくださった皆さま、本当にありがとうございました。<br>
-      どうか、皆さんがこれからも楽しく穏やかに過ごせますように。
-    </p>
-    <p class="footer">
-      ― さようなら、そしてありがとう。
-    </p>
+
+  <!-- バナー -->
+  <div class="fixed top-0 w-full bg-black text-yellow-400 font-mono py-3 overflow-hidden shadow-lg z-50">
+    <div class="whitespace-nowrap inline-block animate-fast-scroll">
+      <span class="inline-block px-4">
+     【重要】アカウント「不正アクセス」が多数いろんなsnsにて報告されています。pass漏洩のないか今一度ご確認ください。
+      </span>
+    </div>
   </div>
+
+  <!-- 氷刃アニメーション -->
+  <div id="ice-effect"></div>
+  <script>
+    window.addEventListener("load", () => {
+      for (let i = 0; i < 12; i++) {
+        const blade = document.createElement("div");
+        blade.className = "ice-blade";
+        blade.style.left = `${Math.random() * 100}%`;
+        blade.style.animationDelay = `${Math.random() * 0.5}s`;
+        document.getElementById("ice-effect").appendChild(blade);
+      }
+    });
+  </script>
+
+  <!-- ヒーローセクション -->
+  <header id="hero" class="text-center py-20 px-4 bg-gradient-to-br from-indigo-600 to-purple-700 text-white mt-12">
+    <h1 class="text-4xl md:text-6xl font-bold">gafuCommunity</h1>
+    <p class="mt-4 text-lg md:text-xl">楽しく、自由に、つながろう。</p>
+    <a href="https://discord.gg/W2AYhaau2D" target="_blank"
+       class="mt-6 inline-block bg-white text-indigo-700 font-semibold px-6 py-3 rounded-full hover:bg-gray-100 transition">
+      Discordに参加する
+    </a>
+  </header>
+
+  <!-- 所属 -->
+  <section id="soshoku" class="bg-white py-12 px-6 max-w-4xl mx-auto rounded-lg shadow-lg border-t-8 border-blue-700 mt-12">
+    <h2 class="text-3xl font-bold text-blue-700 text-center mb-4 border-b-2 border-blue-500 pb-2">所属「管理鯖」</h2>
+    <ul class="list-disc list-inside text-gray-700 text-lg space-y-2">
+      <li>gafuCommunity 本部サーバー</li>
+      <li>ぼくのいばしょ コミュニティ鯖</li>
+    </ul>
+  </section>
+
+  <!-- 自作Bot -->
+  <section id="bot" class="bg-gray-800 py-12 px-6 max-w-3xl mx-auto rounded-lg shadow-lg mb-12 text-center mt-12">
+    <h2 class="text-3xl font-bold text-white mb-4">🤖 自作Botメンテナンス中</h2>
+    <p class="text-red-400 text-lg font-semibold mb-2">現在、gafuCommunityの自作Botはメンテナンスを行っております。</p>
+    <p class="text-gray-300">Bot機能の一部またはすべてが一時的にご利用いただけません。</p>
+    <p class="text-gray-400">復旧のお知らせはDiscordサーバー内「📢お知らせ」チャンネルにて行います。</p>
+    <div class="mt-6">
+      <span class="inline-block bg-yellow-600 text-white px-5 py-2 rounded-full font-semibold animate-pulse">
+        メンテナンス中 🔧
+      </span>
+    </div>
+  </section>
+
+  <!-- 禁止事項 -->
+  <section id="rules" class="bg-gray-800 py-12 px-6 max-w-4xl mx-auto rounded-lg shadow-lg mt-12 mb-12">
+    <h2 class="text-3xl font-bold mb-6 text-center text-white">🚫 禁止事項</h2>
+    <ul class="list-disc list-inside text-gray-300 text-lg leading-relaxed space-y-2">
+      <li>他人への迷惑行為・誹謗中傷</li>
+      <li>スパム・荒らし行為</li>
+      <li>無断での広告・宣伝</li>
+      <li>個人情報の公開</li>
+      <li><strong>サポーターは3回目以降なれません</strong></li>
+      <li>その他、モデレーターが不適切と判断した行為</li>
+    </ul>
+  </section>
 </body>
 </html>
+危険リスト
+アイコニック
