@@ -13,7 +13,7 @@
       background-color: #1f2937;
       color: #e5e7eb;
       font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-      padding-top: 3rem; /* 警告バナー分のスペース確保 */
+      padding-top: 3rem;
     }
     .ice-blade {
       position: fixed;
@@ -41,21 +41,7 @@
       height: 100%;
       box-shadow: 0 0 10px #9be7ff, 0 0 20px #b3faff;
     }
-    /* 今後の予定は固定表示なのでスクロールアニメーションなし */
-  </style>
-</head>
-<body>
-  <!-- LED風警告バナー -->
-  <div class="fixed top-6 w-full bg-black text-yellow-400 font-mono py-3 overflow-hidden shadow-lg z-50">
-    <div id="led-wrapper" class="whitespace-nowrap inline-block">
-      <span id="led-text" class="inline-block px-4">
-        ⚠️ アカウント乗っ取りが多数報告されています。今一度漏洩されていないかご確認ください。⚠️
-      </span>
-    </div>
-  </div>
-
-  <style>
-    @keyframes slowScroll {
+    @keyframes fastScroll {
       0% {
         transform: translateX(100%);
       }
@@ -63,33 +49,21 @@
         transform: translateX(-100%);
       }
     }
-    .animate-slow-scroll {
-      animation: slowScroll 50s linear infinite; /* 50秒で一周 */
+    .animate-fast-scroll {
+      animation: fastScroll 10s linear infinite;
     }
   </style>
+</head>
+<body>
 
-  <script>
-    const messages = [
-      "⚠️ アカウント乗っ取りが多数報告されています。今一度漏洩されていないかご確認ください。⚠️",
-      "【重要】現在Manager、サポーター募集中です。鯖までどうぞ。"
-    ];
-
-    let currentIndex = 0;
-    const ledText = document.getElementById("led-text");
-    const wrapper = document.getElementById("led-wrapper");
-
-    function updateMessage() {
-      currentIndex = (currentIndex + 1) % messages.length;
-      ledText.textContent = messages[currentIndex];
-
-      wrapper.classList.remove("animate-slow-scroll");
-      void wrapper.offsetWidth;
-      wrapper.classList.add("animate-slow-scroll");
-    }
-
-    wrapper.classList.add("animate-slow-scroll");
-    setInterval(updateMessage, 50000);
-  </script>
+  <!-- スクロールバナー（10秒で1周） -->
+  <div class="fixed top-0 w-full bg-black text-yellow-400 font-mono py-3 overflow-hidden shadow-lg z-50">
+    <div class="whitespace-nowrap inline-block animate-fast-scroll">
+      <span class="inline-block px-4">
+        ⚠️ Discordサーバーは現在メンテナンス中です。不具合発生時には雑談にてご送信お願いします。皆様が素敵な環境をつくれるようおてつだいします。⚠️
+      </span>
+    </div>
+  </div>
 
   <!-- 氷刃アニメーション -->
   <div id="ice-effect"></div>
