@@ -3,88 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ガフの自己紹介ページ</title>
+    <title>広告募集中</title>
     <style>
-        body {
-            font-family: 'Courier New', monospace; /* プログラマー向けフォント */
-            background-color: #282c34; /* ダークな背景 */
-            color: #ffffff; /* 白文字 */
-            margin: 0;
-            padding: 0;
-        }
-        header {
-            background-color: #1e2125;
-            color: #61dafb; /* プログラマー感を出す青 */
-            text-align: center;
-            padding: 15px;
-            font-size: 2em;
-        }
-        .banner {
+        .ad-warning {
             background-color: #ffcc00;
-            color: black;
+            color: #333;
+            padding: 20px;
+            text-align: center;
             font-size: 18px;
-            white-space: nowrap;
-            overflow: hidden;
-            width: 100%;
-            padding: 10px 0;
-            position: fixed;
-            top: 0;
-            z-index: 1000;
-        }
-        .banner-content {
-            display: inline-block;
-            padding-left: 100%;
-            animation: scroll-left 10s linear infinite;
-        }
-        @keyframes scroll-left {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-100%); }
-        }
-        .content {
-            padding: 100px 20px 20px;
-            text-align: center;
-        }
-        .content h2 {
-            color: #61dafb;
-            font-size: 2em;
-        }
-        footer {
-            background-color: #1e2125;
-            color: white;
-            text-align: center;
-            padding: 10px;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
+            font-weight: bold;
+            border: 2px solid #ff9900;
+            margin: 20px 0;
         }
     </style>
 </head>
 <body>
-
-    <header>
-        <h1>ガフの自己紹介</h1>
-    </header>
-
-    <!-- スクロールバナー -->
-    <div class="banner">
-        <div class="banner-content">
-            ⚠️ SNS乗っ取りにご注意ください ⚠️ &nbsp;&nbsp;&nbsp;&nbsp; 不審な行動は関係者にお知らせください &nbsp;&nbsp;&nbsp;&nbsp;
-        </div>
+    <div class="ad-warning">
+        このサイトは広告募集中です。
     </div>
-
-    <div class="content">
-        <h2>自己紹介</h2>
-        <p><strong>名前：</strong>ガフ</p>
-        <p><strong>年齢：</strong>15歳</p>
-        <p><strong>性別：</strong>ガフ</p>
-        <p><strong>特技：</strong>ChatGPTをうまく使いプログラムを作ること</p>
-        <p><strong>趣味：</strong>機器専門、光り物</p>
-        <p><strong>対応時間：</strong>午前5:30〜8:30、午後17:00〜22:00</p>
-    </div>
-
-    <footer>
-        <p>&copy; 2025 ガフ</p>
-    </footer>
-
 </body>
 </html>
