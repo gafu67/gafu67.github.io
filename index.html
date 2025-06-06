@@ -10,13 +10,23 @@
 
   <div class="max-w-screen-md mx-auto px-4 sm:px-6 py-10 space-y-10">
 
-    <!-- ヘッダー -->
-    <header class="text-center space-y-2">
-      <h1 class="text-4xl sm:text-5xl font-extrabold italic tracking-widest">
-        gafu𝒄𝒐𝒎𝒎𝒖𝒏𝒊𝒄𝒂𝒕𝒊𝒐𝒏
-      </h1>
-      <p class="text-base sm:text-lg opacity-80">ガフ鯖制作ネット会社 公式Discordサイト</p>
-    </header>
+  <!-- スクロールバナー（ガフ制作ネット会社） -->
+<div class="overflow-hidden whitespace-nowrap bg-indigo-700 py-2">
+  <div class="inline-block animate-marquee text-white text-base sm:text-lg font-semibold tracking-wider px-6">
+    ガフ制作ネット会社　ガフ制作ネット会社　ガフ制作ネット会社　ガフ制作ネット会社　ガフ制作ネット会社　
+  </div>
+</div>
+
+<!-- Tailwindの拡張CSS（ページ内styleに追加） -->
+<style>
+@keyframes marquee {
+  0%   { transform: translateX(100%); }
+  100% { transform: translateX(-100%); }
+}
+.animate-marquee {
+  animation: marquee 15s linear infinite;
+}
+</style>
 
     <!-- サーバー紹介 -->
     <section class="bg-white bg-opacity-10 backdrop-blur-sm p-5 sm:p-6 rounded-2xl shadow-xl">
