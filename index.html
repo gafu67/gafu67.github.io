@@ -8,53 +8,42 @@
 </head>
 <body class="bg-gradient-to-br from-purple-800 via-indigo-900 to-black text-white font-sans">
 
+  <!-- 🔴 サービス終了バナー -->
+  <div class="bg-red-600 text-white text-center py-3 text-sm sm:text-base font-bold shadow-md">
+    ⚠️ 本サービスは終了しました。ご利用ありがとうございました。
+  </div>
+
   <div class="max-w-screen-md mx-auto px-4 sm:px-6 py-10 space-y-10">
 
-  <!-- スクロールバナー（ガフ制作ネット会社） -->
-<div class="overflow-hidden whitespace-nowrap bg-indigo-700 py-2">
-  <div class="inline-block animate-marquee text-white text-base sm:text-lg font-semibold tracking-wider px-6">
-    ガフ制作ネット会社　ガフ制作ネット会社　ガフ制作ネット会社　ガフ制作ネット会社　ガフ制作ネット会社　
-  </div>
-</div>
-
-<!-- Tailwindの拡張CSS（ページ内styleに追加） -->
-<style>
-@keyframes marquee {
-  0%   { transform: translateX(100%); }
-  100% { transform: translateX(-100%); }
-}
-.animate-marquee {
-  animation: marquee 15s linear infinite;
-}
-</style>
+    <!-- ヘッダー -->
+    <header class="text-center space-y-2">
+      <h1 class="text-4xl sm:text-5xl font-extrabold italic tracking-widest">
+        gafu𝒄𝒐𝒎𝒎𝒖𝒏𝒊𝒄𝒂𝒕𝒊𝒐𝒏
+      </h1>
+      <p class="text-base sm:text-lg opacity-80">ガフ鯖制作ネット会社 公式Discordサイト</p>
+    </header>
 
     <!-- サーバー紹介 -->
     <section class="bg-white bg-opacity-10 backdrop-blur-sm p-5 sm:p-6 rounded-2xl shadow-xl">
       <h2 class="text-2xl sm:text-3xl font-semibold mb-3">🎮 サーバー紹介</h2>
       <p class="text-sm sm:text-base leading-relaxed">
         ガフ鯖制作ネット会社では、ゲーム、プログラミング、電子機器の話題を中心に
-        みんなで楽しく活動しています！誰でも参加OK！
+        みんなで楽しく活動していました！現在はサービスを終了しています。
       </p>
     </section>
 
-    <!-- Discord参加リンク -->
+    <!-- Discord参加リンク（非表示にする場合はコメントアウトしてOK） -->
     <section class="bg-white bg-opacity-10 backdrop-blur-sm p-5 sm:p-6 rounded-2xl shadow-xl text-center">
-      <h2 class="text-2xl sm:text-3xl font-semibold mb-3">🚀 参加はこちら！</h2>
-      <a
-        href="https://discord.gg/W2AYhaau2D"
-        target="_blank"
-        class="inline-block mt-4 px-6 py-3 text-base sm:text-lg bg-indigo-600 hover:bg-indigo-500 rounded-full font-bold transition"
-      >
-        Discordに参加する
-      </a>
+      <h2 class="text-2xl sm:text-3xl font-semibold mb-3">🚫 Discord参加</h2>
+      <p class="text-sm sm:text-base opacity-70">このサーバーへの参加は現在停止中です。</p>
     </section>
 
     <!-- お知らせ -->
     <section class="bg-white bg-opacity-10 backdrop-blur-sm p-5 sm:p-6 rounded-2xl shadow-xl">
-      <h2 class="text-2xl sm:text-3xl font-semibold mb-3">📰 最新のお知らせ</h2>
+      <h2 class="text-2xl sm:text-3xl font-semibold mb-3">📰 最後のお知らせ</h2>
       <ul class="list-disc list-inside space-y-2 text-sm sm:text-base">
-        <li>2025/06/06 - サイトTOPページ公開！</li>
-        <li>夏のイベント企画中！</li>
+        <li>2025/06/06 - gafu𝒄𝒐𝒎𝒎𝒖𝒏𝒊𝒄𝒂𝒕𝒊𝒐𝒏 のサービス提供を終了しました。</li>
+        <li>これまでのご利用ありがとうございました。</li>
       </ul>
     </section>
 
