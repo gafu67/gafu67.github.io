@@ -1,101 +1,133 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>gafuを紹介するブログ</title>
-  <style>
-    body {
-      font-family: "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
-      background-color: #f9f9f9;
-      color: #333;
-      margin: 0;
-      padding: 20px;
-    }
-
-    header {
-      background-color: #4a90e2;
-      color: white;
-      padding: 20px;
-      text-align: center;
-      border-radius: 10px;
-    }
-
-    main {
-      max-width: 800px;
-      margin: 40px auto;
-      background: white;
-      padding: 30px;
-      border-radius: 12px;
-      box-shadow: 0 0 20px rgba(0,0,0,0.1);
-    }
-
-    h1, h2 {
-      color: #2c3e50;
-    }
-
-    section {
-      margin-bottom: 30px;
-    }
-
-    blockquote {
-      font-style: italic;
-      color: #555;
-      border-left: 5px solid #ccc;
-      padding-left: 15px;
-    }
-
-    footer {
-      text-align: center;
-      color: #aaa;
-      margin-top: 40px;
-    }
-  </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ネットの危険体験シミュレーション（安全版）</title>
+<style>
+  body { font-family: Meiryo, sans-serif; max-width: 700px; margin: auto; padding: 20px; background:#f5f5f5; }
+  h1 { color: #d33; text-align: center; }
+  .scenario, .result { background: white; padding: 20px; border-radius: 10px; box-shadow: 0 0 10px #ccc; margin-bottom: 20px; }
+  button { margin: 10px 10px 0 0; padding: 10px 15px; border: none; border-radius: 5px; background: #448aff; color: white; cursor: pointer; }
+  button:hover { background: #2962ff; }
+  .safe { background: #c8e6c9; color: #256029; padding: 10px; border-radius: 8px; }
+  .danger { background: #ffcdd2; color: #c62828; padding: 10px; border-radius: 8px; }
+  .footer { text-align: center; color: #777; margin-top: 40px; font-size: 0.9em; }
+</style>
 </head>
 <body>
 
-  <header>
-    <h1>【紹介】15歳の天才プログラマー「gafu」って誰？</h1>
-    <p>光り物とコードを愛する日常</p>
-  </header>
+<h1>ネットの危険体験シミュレーション（安全版）</h1>
 
-  <main>
-    <section>
-      <h2>◆ gafuってどんな人？</h2>
-      <ul>
-        <li><strong>名前：</strong>gafu（ガフ）</li>
-        <li><strong>年齢：</strong>15歳</li>
-        <li><strong>性別：</strong>ガフ</li>
-        <li><strong>通学中：</strong>学生として学びながらプログラミングに打ち込む毎日</li>
-        <li><strong>活動時間：</strong>朝 5:30〜8:30 ／ 夕方 17:00〜22:00</li>
-      </ul>
-    </section>
+<div id="scenario-container" class="scenario">
+  <!-- シナリオ本文 -->
+</div>
 
-    <section>
-      <h2>◆ 特技は「ChatGPT × プログラミング」</h2>
-      <p>ChatGPTをうまく使ってプログラムを作ることが得意。Webアプリや自動化スクリプト、ガジェット系ツールなどもこなす！</p>
-    </section>
+<div id="result-container"></div>
 
-    <section>
-      <h2>◆ 趣味は「機器専門 × 光り物」</h2>
-      <p>LEDや自作PCなど、光り物のガジェットに目がない！夜の作業机はまるで近未来。</p>
-    </section>
+<div class="footer">© 2025 ネットの安全を守ろう</div>
 
-    <section>
-      <h2>◆ ガフからのひとこと</h2>
-      <blockquote>「自分の“好き”を、コードで形にするのが楽しい。AIも、自分のパートナーの一部。」</blockquote>
-    </section>
+<script>
+const scenarios = [
+  {
+    text: "あなたは知らない人から「急ぎで振込先を変更してほしい」とメールが来ました。どうしますか？",
+    options: [
+      { text: "電話や直接本人に確認する", next: 1 },
+      { text: "メールの指示通り振込む", next: 2 }
+    ]
+  },
+  {
+    text: "正解です！本人に直接確認するのが詐欺被害を防ぐ一番の方法です。",
+    options: [
+      { text: "次の問題へ", next: 3 }
+    ],
+    result: "safe"
+  },
+  {
+    text: "危険です！指示通り振り込むと詐欺に遭う可能性が非常に高いです。",
+    options: [
+      { text: "もう一度やり直す", next: 0 }
+    ],
+    result: "danger"
+  },
+  {
+    text: "あなたのスマホに怪しいアプリが勝手にインストールされました。どうしますか？",
+    options: [
+      { text: "すぐにアンインストールしてウイルススキャンを行う", next: 4 },
+      { text: "放置して様子を見る", next: 5 }
+    ]
+  },
+  {
+    text: "その通り！怪しいアプリはすぐに削除し、セキュリティチェックをしましょう。",
+    options: [
+      { text: "次の問題へ", next: 6 }
+    ],
+    result: "safe"
+  },
+  {
+    text: "放置は危険！マルウェアが情報を盗んだり、端末を乗っ取られる恐れがあります。",
+    options: [
+      { text: "もう一度やり直す", next: 3 }
+    ],
+    result: "danger"
+  },
+  {
+    text: "SNSで見知らぬ人から友達申請が来て、すぐに個人情報を送るように言われました。どうしますか？",
+    options: [
+      { text: "断ってブロックする", next: 7 },
+      { text: "送ってしまう", next: 8 }
+    ]
+  },
+  {
+    text: "正解！見知らぬ人に個人情報を渡すのは大きなリスクがあります。",
+    options: [
+      { text: "終了する", next: null }
+    ],
+    result: "safe"
+  },
+  {
+    text: "危険です！詐欺やなりすまし被害の原因になります。",
+    options: [
+      { text: "もう一度やり直す", next: 6 }
+    ],
+    result: "danger"
+  }
+];
 
-    <section>
-      <h2>◆ まとめ：gafuは未来のクリエイター！</h2>
-      <p>プログラムとAIを駆使して、世界を作る若き才能。これからの活躍が本当に楽しみ！</p>
-    </section>
+let currentIndex = 0;
 
-    <footer>
-      次回予告：gafuが作った“自作ツール”の裏側を大公開！？<br>
-      &copy; 2025 gafu blog
-    </footer>
-  </main>
+function showScenario(index) {
+  const scenario = scenarios[index];
+  const container = document.getElementById('scenario-container');
+  const resultContainer = document.getElementById('result-container');
+
+  container.innerHTML = `<p>${scenario.text}</p>`;
+  resultContainer.innerHTML = "";
+
+  if(scenario.result === "safe") {
+    resultContainer.innerHTML = `<div class="safe">✅ 安全な選択です。</div>`;
+  } else if(scenario.result === "danger") {
+    resultContainer.innerHTML = `<div class="danger">⚠️ 危険な選択です。</div>`;
+  }
+
+  scenario.options.forEach((opt, i) => {
+    const btn = document.createElement('button');
+    btn.textContent = opt.text;
+    btn.onclick = () => {
+      if(opt.next === null) {
+        container.innerHTML = "<p>シミュレーションを終了します。ご利用ありがとうございました。</p>";
+        resultContainer.innerHTML = "";
+        return;
+      }
+      currentIndex = opt.next;
+      showScenario(currentIndex);
+    };
+    container.appendChild(btn);
+  });
+}
+
+showScenario(currentIndex);
+</script>
 
 </body>
 </html>
