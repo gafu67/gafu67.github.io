@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ミニあつ森風ゲーム</title>
+<style>
+  body {
+    font-family: sans-serif;
+    text-align: center;
+    margin: 20px;
+  }
+  #game {
+    display: grid;
+    grid-template-columns: repeat(10, 40px);
+    grid-template-rows: repeat(10, 40px);
+    gap: 2px;
+    justify-content: center;
+    margin: 20px auto;
+  }
+  .cell {
+    width: 40px;
+    height: 40px;
+    background-color: #a2d149;
+    border: 1px solid #5a7d1a;
+    cursor: pointer;
+    user-select: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+  }
+  .tree {
+    background-color: #3b7a1f;
+    color: #0f3e06;
+  }
+</style>
+</head>
+<body>
+
+<h1>ミニあつ森風ゲーム</h1>
+<p>マスをクリックして木を植えよう。データは保存されます。</p>
+
+<div id="game"></div>
+
+<script>
+  const size = 10;
+  const gameEl = document.getElementById('game');
+
+  // セーブデータをlocalStorageから取得（JSON.parseし忘れ注意）
+  let mapData = JSON.parse(localStorage.getItem('miniAtsumoriMap')) || Array(size*size).fill(null);
+
+  // セルを作って表示する関数
+  function renderMap() {
+    gameEl.innerHTML = '';
+    for (let i = 0; i < size*size; i++) {
+      const cell = document.createElement('div');
+      cell.className = 'cell';
+      if (mapData[i] === 'tree') {
+        cell.classList.add('tree');
+        cell.textContent = '🌳';
+      }
+      cell.addEventListener('click', () => {
+        if (mapData[i] === 'tree') {
+          mapData[i] = null; // 木を削除
+        } else {
+          mapData[i] = 'tree'; // 木を植える
+        }
+        saveMap();
+        renderMap();
+      });
+      gameEl.appendChild(cell);
+    }
+  }
+
+  // セーブする関数
+  function saveMap() {
+    localStorage.setItem('miniAtsumoriMap', JSON.stringify(mapData));
+  }
+
+  renderMap();
+</script>
+
+</body>
+</html>
