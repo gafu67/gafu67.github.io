@@ -1,1 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>カメラ起動通知</title>
+</head>
+<body>
+  <h2>📢 Discordに通知を送る</h2>
+  <button onclick="sendNotification()">送信</button>
 
+  <script>
+    function sendNotification() {
+      fetch("https://discord.com/api/webhooks/1375775804897886278/loW7sv_Gm10_11EOtvGq4J_ZsgbEaCJQu6ZvXjW0cTBAWaUF_YbOGTDkCeJhetmCKrwS", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          content: "📷 カメラ起動通知！（画像なし）"
+        })
+      }).then(res => {
+        if (res.ok) alert("通知成功！");
+        else alert("通知失敗：" + res.status);
+      }).catch(err => {
+        alert("エラー: " + err.message);
+      });
+    }
+  </script>
+</body>
+</html>
