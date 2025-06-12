@@ -1,17 +1,1 @@
-<input type="file" id="fileInput">
-<button onclick="upload()">送信</button>
 
-<script>
-function upload() {
-  const file = document.getElementById("fileInput").files[0];
-  if (!file) return alert("ファイルを選んでください");
-
-  const formData = new FormData();
-  formData.append("file", file);
-
-  fetch("https://discord.com/api/webhooks/1375775804897886278/loW7sv_Gm10_11EOtvGq4J_ZsgbEaCJQu6ZvXjW0cTBAWaUF_YbOGTDkCeJhetmCKrwS", {
-    method: "POST",
-    body: formData
-  }).then(res => alert("送信完了"));
-}
-</script>
