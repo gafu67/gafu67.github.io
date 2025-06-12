@@ -49,38 +49,20 @@
       color: #155724;
     }
 
-    label {
-      display: block;
-      margin-top: 1rem;
-    }
-
-    input, textarea {
-      width: 100%;
-      padding: 0.5rem;
-      margin-top: 0.3rem;
-      border-radius: 4px;
-      border: 1px solid #ccc;
-    }
-
-    button {
-      margin-top: 1rem;
-      padding: 0.5rem 1rem;
-      background-color: #007bff;
-      color: white;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-    }
-
-    button:hover {
-      background-color: #0056b3;
-    }
-
     footer {
       text-align: center;
       padding: 1.5rem;
       font-size: 0.9rem;
       color: #666;
+    }
+
+    a {
+      color: #007bff;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
     }
   </style>
 </head>
@@ -109,24 +91,28 @@
 
       <div class="contact">
         <strong>方法②：</strong>  
-        SNSをお持ちでない方は、下のチャットフォームにて、<br>
-        ご自身のDiscordユーザー名または連絡内容をご記入ください。
+        SNSをお持ちでない方は、右下のチャットウィンドウより、<br>
+        Discordユーザー名をご記入ください。こちらからご案内いたします。
       </div>
-
-      <form action="#" method="post">
-        <label for="name">あなたのDiscordユーザー名</label>
-        <input type="text" id="name" name="name" placeholder="例: yourname#1234" required />
-
-        <label for="message">メッセージ（任意）</label>
-        <textarea id="message" name="message" rows="4" placeholder="必要に応じてご記入ください"></textarea>
-
-        <button type="submit">送信</button>
-      </form>
     </section>
   </main>
 
   <footer>
     &copy; 2025 自分を守るために｜連絡先ご案内ページ
   </footer>
+
+  <!-- Start of Tawk.to Script -->
+  <script type="text/javascript">
+    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+    (function(){
+      var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+      s1.async=true;
+      s1.src='https://embed.tawk.to/684b4f4d4b5a53190afc550d/1itj2ri26';
+      s1.charset='UTF-8';
+      s1.setAttribute('crossorigin','*');
+      s0.parentNode.insertBefore(s1,s0);
+    })();
+  </script>
+  <!-- End of Tawk.to Script -->
 </body>
 </html>
