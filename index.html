@@ -1,1 +1,80 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<title>WebRTC 画面共有</title>
+</head>
+<body>
+<h1>WebRTC 画面共有</h1>
+
+<button id="startShare">画面共有を開始</button>
+<button id="startReceive">画面共有を受信</button>
+
+<video id="localVideo" autoplay playsinline muted style="width:300px; border:1px solid #ccc;"></video>
+<video id="remoteVideo" autoplay playsinline style="width:300px; border:1px solid #ccc;"></video>
+
+<script>
+const startShareBtn = document.getElementById('startShare');
+const startReceiveBtn = document.getElementById('startReceive');
+const localVideo = document.getElementById('localVideo');
+const remoteVideo = document.getElementById('remoteVideo');
+
+let pc = new RTCPeerConnection({
+  iceServers: [{ urls: "stun:stun.l.google.com:19302" }]
+});
+let localStream;
+
+// シグナリング用簡易関数（このサンプルでは手動でSDPをコピペ）
+function sendOffer(offer) {
+  const offerText = JSON.stringify(offer);
+  prompt("Offerをコピーして受信側に渡してください:", offerText);
+}
+
+function sendAnswer(answer) {
+  const answerText = JSON.stringify(answer);
+  prompt("Answerをコピーして送信側に渡してください:", answerText);
+}
+
+startShareBtn.onclick = async () => {
+  try {
+    localStream = await navigator.mediaDevices.getDisplayMedia({ video: true });
+    localVideo.srcObject = localStream;
+
+    localStream.getTracks().forEach(track => pc.addTrack(track, localStream));
+
+    const offer = await pc.createOffer();
+    await pc.setLocalDescription(offer);
+
+    sendOffer(pc.localDescription);
+
+  } catch (e) {
+    alert("画面共有の許可が必要です");
+  }
+};
+
+startReceiveBtn.onclick = async () => {
+  const offerText = prompt("送信側からOfferをペーストしてください");
+  if (!offerText) return;
+
+  const offer = JSON.parse(offerText);
+  await pc.setRemoteDescription(offer);
+
+  const answer = await pc.createAnswer();
+  await pc.setLocalDescription(answer);
+
+  sendAnswer(pc.localDescription);
+};
+
+pc.onicecandidate = event => {
+  if (event.candidate) {
+    // ここではICE候補の交換は省略しているため完全な動作には改良が必要
+  }
+};
+
+pc.ontrack = event => {
+  remoteVideo.srcObject = event.streams[0];
+};
+</script>
+</body>
+</html>
 
