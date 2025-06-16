@@ -5,27 +5,38 @@
   <title>サイト休止中</title>
   <style>
     body {
-      background-color: #f4f4f4;
+      background-color: #f9f9f9;
+      font-family: 'Arial', sans-serif;
       color: #333;
-      font-family: sans-serif;
-      text-align: center;
-      padding: 100px 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
     }
-    .box {
+    .message-box {
       background: white;
-      display: inline-block;
-      padding: 2rem;
-      border-radius: 10px;
+      padding: 2rem 3rem;
+      border-radius: 12px;
       box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+    h1 {
+      color: #ff6f61;
+      margin-bottom: 1rem;
+    }
+    p {
+      font-size: 1.1rem;
+      line-height: 1.6;
     }
   </style>
 </head>
 <body>
-  <div class="box">
-    <h1>現在、休止中です</h1>
-    <p>このサイトはただいま一時休止しております。</p>
-    <p>再開時期が決まり次第、お知らせいたします。</p>
-    <p>ご理解のほど、よろしくお願いいたします。</p>
+  <div class="message-box">
+    <h1>現在休止中</h1>
+    <p>このサイトは現在、一時休止しております。</p>
+    <p><strong>再開予定：1か月後</strong></p>
+    <p>ご不便をおかけしますが、ご理解のほどよろしくお願いいたします。</p>
   </div>
 </body>
 </html>
