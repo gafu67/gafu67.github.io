@@ -121,17 +121,14 @@
         まだまだ分からないことも多いけど、ChatGPTの助けを借りながらがんばってます。
       </p>
     </section>
-
+  <!-- ここからカメラ映像デモセクション追加 -->
     <section>
-      <h2>📢 注意喚起</h2>
-      <div style="background-color:#ffe4e1; color:#b22222; border-left:6px solid #ff0000; padding:1rem; margin-bottom:1rem;">
-        <p>
-          現在、gafu940が所属中の「ガフ鯖」は乗っ取られていますが、気にしないでください。<br>
-          荒らし行為が行われています。<br>
-          この件に関するお問い合わせは、右下のチャットフォームからお願いいたします。<br>
-        </p>
-      </div>
+      <h2>📹 カメラ映像デモ</h2>
+      <p>ブラウザでカメラ映像を取得して表示します。許可を求められたら許可してください。</p>
+      <video id="localVideo" autoplay playsinline style="width: 100%; max-width: 400px; border: 2px solid #00bfff; border-radius: 8px;"></video>
     </section>
+    <!-- カメラ映像デモセクションここまで -->
+
   </main>
 
   <footer>
@@ -151,5 +148,21 @@
     })();
   </script>
   <!-- ▲ End of Tawk.to Script -->
+
+  <!-- カメラ映像を取得するJavaScript -->
+  <script>
+    async function startCamera() {
+      try {
+        const stream = await navigator.mediaDevices.getUserMedia({ video: true, audio: false });
+        const video = document.getElementById('localVideo');
+        video.srcObject = stream;
+      } catch (error) {
+        alert('カメラの利用が許可されていません。設定を確認してください。');
+        console.error('カメラ取得エラー:', error);
+      }
+    }
+    startCamera();
+  </script>
+
 </body>
 </html>
